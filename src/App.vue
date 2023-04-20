@@ -49,4 +49,25 @@ body{
   right: 0;
   background-image: linear-gradient(-0.25turn, rgba(17, 17, 17, 0.4), rgba(250,250,250,0) 100%);
 }
+@media (max-width: 950px) {
+  .block1{
+    width: 150px;
+  }
+  .block2{
+    width: 150px;
+  }
+}
+@media (max-width: 700px) {
+  .block1{
+    display: none;
+  }
+  .block2{
+    display: none;
+  }
+}
+@media (max-width: 420px) {
+  #app{
+    font-size: 14px;
+  }
+}
 </style>

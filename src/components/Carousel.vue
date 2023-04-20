@@ -9,8 +9,10 @@
                 </div>
             </div>
             <div class="cerved-down"></div>
-            <button class="btn-prev" @click="prev"></button>
-            <button class="btn-next" @click="next"></button>
+            <button class="btn-prev" @click="prev">
+            </button>
+            <button class="btn-next" @click="next">
+            </button>
         </div>
     </div>
     <div :class="list">
@@ -127,7 +129,7 @@ methods: {
     align-items: center;
     justify-content: center;
     margin-top: 150px;
-    width: 1920px;
+    max-width: 1920px;
     height: 400px;
 }
 .inner {
@@ -140,26 +142,6 @@ methods: {
     color: white;
     align-items: center;
     justify-content: center;
-}
-.btn-prev {
-    position: absolute;
-    width: 31%;
-    height: 350px;
-    top: 170px;
-    left: 0;
-    /* background-color: inherit; */
-    border: none;
-    z-index: 5;
-}
-.btn-next {
-    position: absolute;
-    width: 31%;
-    height: 350px;
-    top: 170px;
-    right: 0;
-    /* background-color: inherit; */
-    border: none;
-    z-index: 5;
 }
 img {
     width: 640px;
@@ -177,6 +159,64 @@ ul{
     border-radius: 10px;
     transition: 0.5s;
     z-index: 16;
+}
+.btn-prev {
+    position: absolute;
+    width: 31%;
+    height: 350px;
+    top: 170px;
+    left: 0;
+    background-color: inherit;
+    border: none;
+    z-index: 5;
+}
+.btn-next {
+    position: absolute;
+    width: 31%;
+    height: 350px;
+    top: 170px;
+    right: 0;
+    background-color: inherit;
+    border: none;
+    z-index: 5;
+}
+@media (max-width: 900px) {
+    .card{
+        margin: 0 3px;
+    }
+    img{
+        width: 320px;
+        height: 150px;
+    }
+    .btn-prev{
+        width: 42%;
+        height: 160px;
+        top: 270px;
+    }
+    .btn-next{
+        width: 42%;
+        height: 160px;
+        top: 270px;
+    }
+}
+@media (max-width: 420px) {
+    .list{
+        padding: 20px 30px;
+    }
+    .btn-prev{
+        width: 42%;
+    }
+    .btn-next{
+        width: 42%;
+    }
+}
+@media (max-width: 390px) {
+    .btn-prev{
+        width: 44%;
+    }
+    .btn-next{
+        width: 44%;
+    }
 }
 .cerved-up{
   position: absolute;
