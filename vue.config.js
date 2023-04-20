@@ -3,3 +3,6 @@ module.exports = defineConfig({
   publicPath: process.env.NODE_ENV === "production" ? "/carusel/" : "/",
   //transpileDependencies: true
 })
+module.exports = {
+publicPath: '/carusel/'
+}
