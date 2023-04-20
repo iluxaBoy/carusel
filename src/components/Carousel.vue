@@ -9,8 +9,7 @@
                 </div>
             </div>
             <div class="cerved-down"></div>
-            <button class="btn-prev" @click="prev">
-            </button>
+            <button class="btn-prev" @click="prev">            </button>
             <button class="btn-next" @click="next">
             </button>
         </div>
@@ -186,7 +185,7 @@ ul{
     }
     img{
         width: 320px;
-        height: 150px;
+        height: 160px;
     }
     .btn-prev{
         width: 42%;
@@ -220,20 +219,20 @@ ul{
 }
 .cerved-up{
   position: absolute;
-  height: 50px;
+  height: 100px;
   width: 2000px;
   margin: auto;
-  top: 135px;
+  top: 120px;
   background-color: #111;
   border-radius: 100%;
   z-index: 5;
 }
 .cerved-down{
   position: absolute;
-  height: 50px;
+  height: 100px;
   width: 2000px;
   margin: auto;
-  bottom: -5px;
+  bottom: -40px;
   background-color: #111;
   border-radius: 100%;
   z-index: 5;
