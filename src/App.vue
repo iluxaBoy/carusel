@@ -1,8 +1,12 @@
 <template>
-<div>
-  <div class="block1"></div>
-  <Carousel/>
-  <div class="block2"></div>
+<div class="main">
+  <div class="container">
+    <div class="block1"></div>
+    <div class="cerved-up"></div>
+    <Carousel/>
+    <div class="cerved-down"></div>
+    <div class="block2"></div>
+  </div>
 </div>
 </template>
 
@@ -23,6 +27,16 @@ export default {
   padding: 0;
   box-sizing: border-box;
 }
+.main{
+  overflow: hidden;
+  min-height: 800px;
+}
+.container{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 body{
   background-color: #111;
 }
@@ -38,6 +52,7 @@ body{
   height: 600px;
   width: 350px;
   top: 0;
+  left: 0;
   background-image: linear-gradient(0.25turn, rgba(17, 17, 17, 0.4) , rgba(250,250,250,0) 100%);
   z-index: 2;
 }
@@ -69,5 +84,33 @@ body{
   #app{
     font-size: 14px;
   }
+}
+.cerved-up{
+  position: absolute;
+  height: 100px;
+  width: 2000px;
+  margin: auto;
+  top: 120px;
+  background-color: #111;
+  border-radius: 100%;
+  z-index: 5;
+}
+.cerved-down{
+  position: absolute;
+  height: 100px;
+  width: 2000px;
+  margin: auto;
+  bottom: 200px;
+  background-color: #111;
+  border-radius: 100%;
+  z-index: 5;
+}
+@media (max-width: 900px) {
+    .cerved-up{
+        display: none;
+    }
+    .cerved-down{
+        display: none;
+    }
 }
 </style>

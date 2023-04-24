@@ -1,17 +1,14 @@
 <template>
 <div class="main">
     <div class="container">
-        <div class="carousel">
-            <div class="cerved-up"></div>
+        <div :class="center" class="carousel">
             <div class="inner" ref="inner" :style="innerStyles">
                 <div class="card" v-for="card in cards" :key="card" @click="getSrc(card)">
                     <img :src="card" alt="img" >
                 </div>
             </div>
-            <div class="cerved-down"></div>
-            <button class="btn-prev" @click="prev">            </button>
-            <button class="btn-next" @click="next">
-            </button>
+            <button :class="btn" class="btn-prev" @click="prev"></button>
+            <button :class="btn" class="btn-next" @click="next"></button>
         </div>
     </div>
     <div :class="list">
@@ -45,6 +42,9 @@ data () {
     step: '',
     transitioning: false,
     list: '',
+    remove: 0,
+    center: '',
+    btn: '',
     }
 },
 mounted () {
@@ -61,6 +61,9 @@ methods: {
         if (this.transitioning) return
         this.transitioning = true
         this.moveLeft()
+        // if (this.card.length === 3){
+        //     return
+        // }
         this.afterTransition(() => {
             const card = this.cards.shift()
             this.cards.push(card)
@@ -106,21 +109,38 @@ methods: {
     },
     getSrc(card){
         this.selectedImg.push(card)
+        // this.remove = this.cards.indexOf(card);
+        // this.cards.splice(this.remove,this.remove -= 1)
+        // if (this.cards.length === 6) {
+        //     this.center = "m-center"
+        // }
+        // else if (this.cards.length <= 3) {
+        //     this.center = 'center'
+        //     this.btn = 'none'
+        // }
+
+        // if (this.remove === 0) {
+        //     this.cards.pop();
+        // }
+        // else if (this.remove === -1) {
+        //     this.cards.shift()
+        // }
+        // console.log(this.remove);
+        // console.log(this.cards.length);
+        // console.log(this.center);
         this.list = 'list'
     }
 }
 }
 </script>
 
-<style>
-.main{
+<style scoped>
+.main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    overflow: hidden;
-    padding-bottom: 50px;
 }
-.container{
+.container {
     position: relative;
 }
 .carousel {
@@ -132,11 +152,21 @@ methods: {
     height: 400px;
 }
 .inner {
+    width: 2100px;
     transition: transform 0.5s;
     white-space: nowrap;
 }
+.center{
+    margin-left: 1400px;
+}
+.left{
+    margin-left: 1050px;
+}
+.none{
+    display: none;
+}
 .card {
-    margin: 0 28px;
+    margin: 0 30px;
     display: inline-flex;
     color: white;
     align-items: center;
@@ -146,14 +176,13 @@ img {
     width: 640px;
     height: 370px;
 }
-ul{
-    list-style: none;
-    margin: 0;
-    padding: 0;
+ol{
+    padding: 0 0 0 10px;
 }
 .list{
+    position: absolute;
     padding: 40px 60px;
-    top: 555px;
+    top: 550px;
     background-color: #2e2e2e;
     border-radius: 10px;
     transition: 0.5s;
@@ -180,22 +209,46 @@ ul{
     z-index: 5;
 }
 @media (max-width: 900px) {
+    .carousel{
+        margin-top: 35px;
+        margin-left: 1200px;
+    }
+    .center{
+        margin-left: 600px;
+    }
+    .m-center{
+        margin-left: 300px;
+    }
+    .one-m-center{
+        margin-left: 0;
+    }
     .card{
         margin: 0 3px;
     }
     img{
-        width: 320px;
+        width: 294px;
         height: 160px;
+    }
+    .list{
+        top: 350px;
     }
     .btn-prev{
         width: 42%;
         height: 160px;
-        top: 270px;
+        top: 152px;
     }
     .btn-next{
         width: 42%;
         height: 160px;
-        top: 270px;
+        top: 152px;
+    }
+}
+@media (max-width: 750px) {
+    .btn-prev{
+        width: 45%;
+    }
+    .btn-next{
+        width: 45%;
     }
 }
 @media (max-width: 420px) {
@@ -203,38 +256,18 @@ ul{
         padding: 20px 30px;
     }
     .btn-prev{
-        width: 42%;
+        width: 47%;
     }
     .btn-next{
-        width: 42%;
+        width: 47%;
     }
 }
-@media (max-width: 390px) {
+@media (max-width: 300px) {
     .btn-prev{
-        width: 44%;
+        width: 48%;
     }
     .btn-next{
-        width: 44%;
+        width: 48%;
     }
-}
-.cerved-up{
-  position: absolute;
-  height: 100px;
-  width: 2000px;
-  margin: auto;
-  top: 120px;
-  background-color: #111;
-  border-radius: 100%;
-  z-index: 5;
-}
-.cerved-down{
-  position: absolute;
-  height: 100px;
-  width: 2000px;
-  margin: auto;
-  bottom: -40px;
-  background-color: #111;
-  border-radius: 100%;
-  z-index: 5;
 }
 </style>
