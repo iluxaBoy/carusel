@@ -61,9 +61,6 @@ methods: {
         if (this.transitioning) return
         this.transitioning = true
         this.moveLeft()
-        // if (this.card.length === 3){
-        //     return
-        // }
         this.afterTransition(() => {
             const card = this.cards.shift()
             this.cards.push(card)
@@ -109,25 +106,21 @@ methods: {
     },
     getSrc(card){
         this.selectedImg.push(card)
-        // this.remove = this.cards.indexOf(card);
-        // this.cards.splice(this.remove,this.remove -= 1)
-        // if (this.cards.length === 6) {
-        //     this.center = "m-center"
-        // }
-        // else if (this.cards.length <= 3) {
-        //     this.center = 'center'
-        //     this.btn = 'none'
-        // }
-
-        // if (this.remove === 0) {
-        //     this.cards.pop();
-        // }
-        // else if (this.remove === -1) {
-        //     this.cards.shift()
-        // }
-        // console.log(this.remove);
-        // console.log(this.cards.length);
-        // console.log(this.center);
+        this.remove = this.cards.indexOf(card);
+        this.cards.splice(this.remove,this.remove -= 1)
+        if (this.cards.length === 6) {
+            this.center = "m-center"
+        }
+        else if (this.cards.length <= 3) {
+            this.center = 'center'
+            this.btn = 'none'
+        }
+        if (this.remove === 0) {
+            this.cards.pop();
+        }
+        else if (this.remove === -1) {
+            this.cards.shift()
+        }
         this.list = 'list'
     }
 }
@@ -158,9 +151,6 @@ methods: {
 }
 .center{
     margin-left: 1400px;
-}
-.left{
-    margin-left: 1050px;
 }
 .none{
     display: none;
